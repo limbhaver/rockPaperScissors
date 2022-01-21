@@ -17,42 +17,45 @@
         return CompTurn;
     } ;
 
-console.log(computerPlay());
-
     function playerSelection() {
        let choice = prompt("Please choose rock, paper, or scissors", "");
-       if (choice == "rock") {
-       return "rock";
-       } else if (choice == "paper") {
-           return "paper";
-       } else if (choice == "scissors") {
-           return "scissors" 
+       if (choice.toLowerCase() === "rock") {
+       return "Rock";
+       } else if (choice.toLowerCase() === "paper") {
+           return "Paper";
+       } else if (choice.toLowerCase() === "scissors") {
+           return "Scissors" 
        } else {
            return "Please make a valid selection"
        }
     } ;
 
-    function gameRound() {
-        if (computerPlay == "rock" && playerSelection == "rock") {
-            return "tie!"
-        } else if (computerPlay == "paper" && playerSelection == "paper") {
-            return "tie!"
-        } else if (computerPlay == "scissors" && playerSelection == "scissors") {
-            return "tie!"
-        } else if (computerPlay == "rock" && playerSelection == "paper") {
-            return "You win!"
-        } else if (computerPlay == "rock" && playerSelection == "scissors") {
-            return "You lose!"
-        } else if (computerPlay == "paper" && playerSelection == "scissors") {
-            return "You lose!"
-        } else if (computerPlay == "paper" && playerSelection == "rock") {
-            return "You win!"
-        } else if (computerPlay == "scissors" && playerSelection == "rock") {
-            return "You win!"
-        } else if (computerPlay == "scissors" && playerSelection == "paper") {
-            return "You lose!" 
+    const computerSelection = computerPlay();
+    const playerPlay = playerSelection();
+
+    function gameRound(computerSelection, playerSelection) {
+        if (computerSelection === "rock" && playerSelection === "Rock") {
+            return "Tie! Both answers are the same"
+        } else if (computerSelection === "paper" && playerSelection === "Paper") {
+            return "Tie! Both answers are the same"
+        } else if (computerSelection === "scissors" && playerSelection === "Scissors") {
+            return "Tie! Both answers are the same"
+        } else if (computerSelection === "rock" && playerSelection === "Paper") {
+            return "You win! " + `${playerSelection}` + " beats " + `${computerSelection}`
+        } else if (computerSelection === "rock" && playerSelection === "Scissors") {
+            return "You lose! " + `${playerSelection}` + " doesn't beat " + `${computerSelection}` 
+        } else if (computerSelection === "paper" && playerSelection === "Scissors") {
+            return "You lose! " + `${playerSelection}` + " doesn't beat " + `${computerSelection}` 
+        } else if (computerSelection === "paper" && playerSelection === "Rock") {
+            return "You win! " + `${playerSelection}` + " beats " + `${computerSelection}`
+        } else if (computerSelection === "scissors" && playerSelection === "Rock") {
+            return "You win! " + `${playerSelection}` + " beats " + `${computerSelection}`
+        } else if (computerSelection === "scissors" && playerSelection === "Paper") {
+            return "You lose! " + `${playerSelection}` + " doesn't beat " + `${computerSelection}` 
         }
     } ;
+
+    console.log(gameRound(computerSelection, playerPlay));
 
 </script>
 </html>
